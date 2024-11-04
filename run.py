@@ -4,6 +4,7 @@ import logging
 from aiogram import Bot, Dispatcher
 from config import API_KEY, SKIP_UPDATE
 from handlers.start import router_start
+from utils.commands import set_commands
 
 
 bot = Bot(token=API_KEY)
@@ -12,6 +13,7 @@ dp = Dispatcher()
 
 async def main():
     dp.include_router(router_start)
+    await set_commands(bot)
     await bot.delete_webhook(drop_pending_updates=SKIP_UPDATE)
     await dp.start_polling(bot)
 

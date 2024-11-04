@@ -2,8 +2,9 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-from config import API_KEY, SKIP_UPDATE
-from handlers import start, dev, character
+
+from settings import API_KEY, SKIP_UPDATE
+from handlers import command, generate
 from utils.commands import set_commands
 
 
@@ -12,8 +13,11 @@ dp = Dispatcher()
 
 
 async def main():
-    dp.include_routers(start.router_start, dev.router_dev, character.router_character)
+    ''' Основаня функция запуска бота '''
+    dp.include_routers(command.router, generate.router)
+
     await set_commands(bot)
+    
     await bot.delete_webhook(drop_pending_updates=SKIP_UPDATE)
     await dp.start_polling(bot)
 

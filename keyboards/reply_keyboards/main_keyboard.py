@@ -1,5 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from config import BUTTONS_NAMES
+
+from settings import BUTTONS_NAMES
 
 
 main_kb = ReplyKeyboardMarkup(keyboard=[

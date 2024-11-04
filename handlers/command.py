@@ -15,6 +15,12 @@ async def command_start(message: Message):
     await message.answer(COMMANDS_RESPONSES['start'], reply_markup=main_kb)
 
 
+@router.message(Command('help'))
+async def command_dev(message: Message):
+    ''' Функция команды /dev '''
+    await message.answer(COMMANDS_RESPONSES['help'])
+
+
 @router.message(Command('dev'))
 async def command_dev(message: Message):
     ''' Функция команды /dev '''
